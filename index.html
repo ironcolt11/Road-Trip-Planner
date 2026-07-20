@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plan your road trips with ease. Add stops, calculate distances, and manage your journey.">
+    <meta name="theme-color" content="#2196F3">
+    <title>Road Trip Planner</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🚗 Road Trip Planner</h1>
+            <p>Plan your journey, track your stops, and manage your route</p>
+        </header>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="stopInput" 
+                    placeholder="Enter a city or location..."
+                    autocomplete="off"
+                >
+                <button id="addBtn" class="btn btn-primary">Add Stop</button>
+            </div>
+            <div class="quick-actions">
+                <button id="clearAllBtn" class="btn btn-secondary">Clear All</button>
+                <button id="exportBtn" class="btn btn-secondary">Export Trip</button>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat">
+                <span class="stat-label">Total Stops:</span>
+                <span class="stat-value" id="stopCount">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Est. Distance:</span>
+                <span class="stat-value" id="totalDistance">0 mi</span>
+            </div>
+        </div>
+
+        <!-- Trip List Section -->
+        <div class="trip-section">
+            <h2>Your Trip</h2>
+            <ul id="tripList" class="trip-list">
+                <li class="empty-state">No stops added yet. Start planning your trip!</li>
+            </ul>
+        </div>
+
+        <!-- Notes Section -->
+        <div class="notes-section">
+            <h3>Trip Notes</h3>
+            <textarea 
+                id="tripNotes" 
+                class="notes-textarea" 
+                placeholder="Add notes about your trip, hotel reservations, restaurant recommendations, etc."
+            ></textarea>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Register service worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed'));
+        }
+    </script>
+</body>
+</html>
